@@ -1,0 +1,44 @@
+{
+  "name": "speck1__coding-test",
+  "version": "1.0.0",
+  "description": "`npm install`",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec babel-node src/server.js --ignore dist/",
+    "dev:bundle": "webpack -wd"
+  },
+  "keywords": [],
+  "author": "Mark Jayson Alimboyogen",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "7.2.2",
+    "@babel/node": "7.2.2",
+    "@babel/preset-env": "7.3.1",
+    "@babel/preset-react": "7.0.0",
+    "babel-loader": "8.0.5",
+    "express": "4.16.4",
+    "react": "16.8.1",
+    "react-dom": "16.8.1",
+    "react-icons": "4.4.0",
+    "styled-components": "^5.3.5",
+    "webpack": "4.29.3",
+    "webpack-cli": "3.2.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "10.0.1",
+    "eslint": "5.13.0",
+    "eslint-plugin-react": "7.12.4",
+    "nodemon": "1.18.10"
+  },
+  "resolutions": {
+    "styled-components": "^5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markalimboyogen/speck1__coding-test.git"
+  },
+  "bugs": {
+    "url": "https://github.com/markalimboyogen/speck1__coding-test/issues"
+  },
+  "homepage": "https://github.com/markalimboyogen/speck1__coding-test#readme"
+}
