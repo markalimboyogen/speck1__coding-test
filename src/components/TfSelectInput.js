@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Styled = {
   Select: styled.div`
@@ -33,20 +33,20 @@ const TfTextInput = ({
 }) => {
   return (
     <div>
-      <Styled.Label><small>{ label }</small></Styled.Label>
+      <Styled.Label>
+        <small>{label}</small>
+      </Styled.Label>
       <Styled.Select>
-        <select
-          name={ name }
-          value={ value }
-          onChange={(e) => onValueChange(e) }
-        >
+        <select name={name} value={value} onChange={(e) => onValueChange(e)}>
           {options.map((option) => (
-            <option value={ option } key={ option }>{ option }</option>
+            <option value={option} key={option}>
+              {option}
+            </option>
           ))}
-        </select> 
+        </select>
       </Styled.Select>
     </div>
   );
-}
+};
 
 export default TfTextInput;

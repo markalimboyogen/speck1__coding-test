@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from "styled-components";
+import styled from 'styled-components';
 
 // components
 import TfUserList from './features/TfUserList/TfUserList';
@@ -13,7 +13,11 @@ const Styled = {
 };
 
 const App = () => {
-  return <Styled.Wrapper><TfUserList /></Styled.Wrapper>;
-}
+  return (
+    <Styled.Wrapper>
+      <TfUserList />
+    </Styled.Wrapper>
+  );
+};
 
 export default App;

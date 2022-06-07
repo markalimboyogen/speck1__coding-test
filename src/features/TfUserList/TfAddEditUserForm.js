@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styled from "styled-components";
+import styled from 'styled-components';
 
 // components
 import TfButton from '../../components/TfButton';
@@ -37,10 +37,7 @@ const TfAddEditUserForm = ({ onAddUserClick = () => {} }) => {
   });
 
   const handleValueChange = (e) => {
-    const {
-      name,
-      value,
-    } = e.target;
+    const { name, value } = e.target;
 
     switch (name) {
       case 'userId':
@@ -61,7 +58,7 @@ const TfAddEditUserForm = ({ onAddUserClick = () => {} }) => {
       default:
         return false;
     }
-  }
+  };
 
   return (
     <>
@@ -69,44 +66,44 @@ const TfAddEditUserForm = ({ onAddUserClick = () => {} }) => {
         <TfTextInput
           label="User ID"
           name="userId"
-          value={ userId || ''}
-          onValueChange={ handleValueChange }
+          value={userId || ''}
+          onValueChange={handleValueChange}
         />
         <TfTextInput
           label="First Name"
           name="firstName"
-          value={ firstName || ''}
-          onValueChange={ handleValueChange }
+          value={firstName || ''}
+          onValueChange={handleValueChange}
         />
         <TfTextInput
           label="Last Name"
           name="lastName"
-          value={ lastName || ''}
-          onValueChange={ handleValueChange }
+          value={lastName || ''}
+          onValueChange={handleValueChange}
         />
         <TfTextInput
           label="Email"
           name="email"
-          value={ email || ''}
-          onValueChange={ handleValueChange }
+          value={email || ''}
+          onValueChange={handleValueChange}
         />
         <TfSelectInput
           label="Status"
           name="status"
-          options={ ['REGISTERED', 'INITIATED'] }
-          value={ status || ''}
-          onValueChange={ handleValueChange }
+          options={['REGISTERED', 'INITIATED']}
+          value={status || ''}
+          onValueChange={handleValueChange}
         />
       </Styled.FormGroup>
       <Styled.PrimaryActions>
         <TfButton
-          disabled={ Object.values(formValues).some(value => !value) }
+          disabled={Object.values(formValues).some((value) => !value)}
           label="Add User"
-          onButtonClick={ () => onAddUserClick(formValues) }
+          onButtonClick={() => onAddUserClick(formValues)}
         />
       </Styled.PrimaryActions>
     </>
   );
-}
+};
 
 export default TfAddEditUserForm;

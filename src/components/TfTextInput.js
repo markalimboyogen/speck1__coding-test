@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Styled = {
   Input: styled.div`
@@ -33,21 +33,24 @@ const TfTextInput = ({
 }) => {
   return (
     <div>
-      {label
-        ? <Styled.Label><small>{ label }</small></Styled.Label>
-        : ''
-      }
+      {label ? (
+        <Styled.Label>
+          <small>{label}</small>
+        </Styled.Label>
+      ) : (
+        ''
+      )}
       <Styled.Input>
         <input
-          name={ name }
-          onChange={(e) => onValueChange(e) }
-          placeholder={ placeholder }
+          name={name}
+          onChange={(e) => onValueChange(e)}
+          placeholder={placeholder}
           type="text"
-          value={ value }
+          value={value}
         />
       </Styled.Input>
     </div>
   );
-}
+};
 
 export default TfTextInput;

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Styled = {
   TableCell: styled.div`
@@ -12,32 +12,25 @@ const Styled = {
   `,
 };
 
-const TfHeader = ({
-  canSelect,
-  headers,
-  cellCount,
-  onSelect = () => {},
-}) => {
+const TfHeader = ({ canSelect, headers, cellCount, onSelect = () => {} }) => {
   return (
     <>
-      {canSelect
-        ? <Styled.TableCell cellCount={ cellCount }>
-            <input
-              type="checkbox"
-              onChange={ (e) => onSelect(e.target.checked) }
-            />
-          </Styled.TableCell>
-        : ''
-      }
+      {canSelect ? (
+        <Styled.TableCell cellCount={cellCount}>
+          <input type="checkbox" onChange={(e) => onSelect(e.target.checked)} />
+        </Styled.TableCell>
+      ) : (
+        ''
+      )}
       {headers.map((header) => {
         return (
-          <Styled.TableCell cellCount={ cellCount } key={ header }>
-            { header }
+          <Styled.TableCell cellCount={cellCount} key={header}>
+            {header}
           </Styled.TableCell>
-        )
+        );
       })}
     </>
   );
-}
+};
 
 export default TfHeader;

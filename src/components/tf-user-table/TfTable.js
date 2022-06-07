@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styled from "styled-components";
+import styled from 'styled-components';
 
 // components
 import TfHeader from './TfHeader';
@@ -17,8 +17,8 @@ const Styled = {
   TableGrid: styled.div`
     display: grid;
     grid-template-columns:
-      ${({ canSelect }) => canSelect ? 'auto' : ''}
-      repeat(${({ cellCount }) => cellCount }, minmax(auto, 1fr));
+      ${({ canSelect }) => (canSelect ? 'auto' : '')}
+      repeat(${({ cellCount }) => cellCount}, minmax(auto, 1fr));
   `,
 };
 
@@ -45,42 +45,43 @@ const TfTable = ({
     }
 
     onItemSelect([...newItemArr]);
-  }
+  };
 
   const items = filteredData.length ? filteredData : data;
 
   return (
     <>
-      {items.length && !hasNoResults
-        ? <Styled.Table>
+      {items.length && !hasNoResults ? (
+        <Styled.Table>
           <Styled.TableGrid
-            canSelect={ gridConfig.canSelect }
-            cellCount={ gridConfig.headers.length }
+            canSelect={gridConfig.canSelect}
+            cellCount={gridConfig.headers.length}
           >
             <TfHeader
-              canSelect={ gridConfig.canSelect }
-              cellCount={ tableCellCount }
-              headers={ gridConfig.headers }
-              onSelect={ handleItemSelect }
+              canSelect={gridConfig.canSelect}
+              cellCount={tableCellCount}
+              headers={gridConfig.headers}
+              onSelect={handleItemSelect}
             />
             {items.map((row, index) => {
               return (
                 <TfGrid
-                  canSelect={ gridConfig.canSelect }
-                  cellCount={ tableCellCount }
-                  data={ row }
-                  index={ index }
-                  key={ `${row.userId} - ${Math.random()}` }
-                  onSelect={ handleItemSelect }
+                  canSelect={gridConfig.canSelect}
+                  cellCount={tableCellCount}
+                  data={row}
+                  index={index}
+                  key={`${row.userId} - ${Math.random()}`}
+                  onSelect={handleItemSelect}
                 />
-              )})
-            }
+              );
+            })}
           </Styled.TableGrid>
-          </Styled.Table>
-        : <p>No results found.</p>
-      }
+        </Styled.Table>
+      ) : (
+        <p>No results found.</p>
+      )}
     </>
   );
-}
+};
 
 export default TfTable;

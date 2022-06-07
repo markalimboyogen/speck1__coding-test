@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from "styled-components";
+import styled from 'styled-components';
 import {
   IoIosAdd,
   IoIosCloudDownload,
@@ -28,9 +28,12 @@ const Styled = {
     margin-right: 24px;
   `,
   Icon: styled.div`
-    color: ${({ disabled }) => disabled ? 'var( --tf-black--lighter)' : 'initial'};
+    align-items: center;
+    color: ${({ disabled }) =>
+      disabled ? 'var( --tf-black--lighter)' : 'initial'};
     border-right: 1px solid var(--tf-black--lightest);
-    pointer-events: ${({ disabled }) => disabled ? 'none' : 'initial'};
+    display: flex;
+    pointer-events: ${({ disabled }) => (disabled ? 'none' : 'initial')};
 
     &:hover {
       cursor: pointer;
@@ -58,25 +61,19 @@ const TfUserList = () => {
       'Last Name',
       'Email',
       'Status',
-      'Created On'
+      'Created On',
     ],
-  }
+  };
 
   const deleteUsers = () => {
     const updatedUsers = users.filter((user) => !user.isSelected);
 
     setUsers([...updatedUsers]);
-  }
+  };
 
   const handleAddUserClick = (userDetails) => {
-    const {
-      userId,
-      firstName,
-      lastName,
-      status,
-      email,
-    } = userDetails;
-    
+    const { userId, firstName, lastName, status, email } = userDetails;
+
     setSearchQuery('');
     setFilteredUsers([]);
     setUsers([
@@ -92,24 +89,24 @@ const TfUserList = () => {
         id: Math.random(),
       },
     ]);
-  }
+  };
 
   const handleItemSelect = (items) => {
     setUsers([...items]);
-  }
+  };
 
   const handleSearchInputChange = (e) => {
     setSearchQuery(e.target.value);
     filterUsers(e.target.value);
-  }
+  };
 
   const filterUsers = (query) => {
-    const userList = users.filter(item => {
+    const userList = users.filter((item) => {
       return query
         .toLowerCase()
         .split(' ')
         .every(
-          query =>
+          (query) =>
             item.userId.toLowerCase().includes(query) ||
             item.firstName.toLowerCase().includes(query) ||
             item.lastName.toLowerCase().includes(query) ||
@@ -119,11 +116,13 @@ const TfUserList = () => {
     });
 
     setFilteredUsers(userList);
-  }
-  
+  };
+
   const actions = [
     {
-      actionFunc: () => { setIsAdding(!isAdding) },
+      actionFunc: () => {
+        setIsAdding(!isAdding);
+      },
       active: true,
       icon: <IoIosAdd />,
       name: 'add',
@@ -152,7 +151,7 @@ const TfUserList = () => {
       icon: <IoIosCloudDownload />,
       name: 'export',
     },
-  ]
+  ];
 
   return (
     <>
@@ -160,44 +159,39 @@ const TfUserList = () => {
         <Styled.Header>
           <TfTextInput
             name="searchUser"
-            onValueChange={ handleSearchInputChange }
+            onValueChange={handleSearchInputChange}
             placeholder="Search user..."
-            value={ searchQuery }
+            value={searchQuery}
           />
           <Styled.IconGroup>
             {actions.map(({ actionFunc, active, icon, name }) => {
               return (
-                <Styled.Icon
-                  disabled={ !active }
-                  onClick={ actionFunc }
-                  key={ name }
-                >
-                  <span>{ icon }</span>
+                <Styled.Icon disabled={!active} onClick={actionFunc} key={name}>
+                  <span>{icon}</span>
                 </Styled.Icon>
-              )
+              );
             })}
           </Styled.IconGroup>
         </Styled.Header>
       </Styled.Section>
-      {isAdding
-        ? <Styled.Section>
-            <TfAddEditUserForm
-              onAddUserClick={ handleAddUserClick }
-            />
-          </Styled.Section>
-        : ''
-      }
+      {isAdding ? (
+        <Styled.Section>
+          <TfAddEditUserForm onAddUserClick={handleAddUserClick} />
+        </Styled.Section>
+      ) : (
+        ''
+      )}
       <Styled.Section>
         <TfTable
-          data={ users }
-          filteredData={ filteredUsers }
-          gridConfig={ gridConfig }
-          hasNoResults={ !users.length || (searchQuery && !filteredUsers.length) }
-          onItemSelect={ handleItemSelect }
+          data={users}
+          filteredData={filteredUsers}
+          gridConfig={gridConfig}
+          hasNoResults={!users.length || (searchQuery && !filteredUsers.length)}
+          onItemSelect={handleItemSelect}
         />
       </Styled.Section>
     </>
   );
-}
+};
 
 export default TfUserList;
