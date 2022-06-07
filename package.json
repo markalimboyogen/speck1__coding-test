@@ -4,8 +4,9 @@
   "description": "`npm install`",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec babel-node src/server.js --ignore dist/",
-    "dev:bundle": "webpack -wd"
+    "dev": "nodemon --exec babel-node src/server.js --ignore build/",
+    "dev:bundle": "webpack -wd",
+    "build": "webpack --mode production"
   },
   "keywords": [],
   "author": "Mark Jayson Alimboyogen",
@@ -28,6 +29,7 @@
     "babel-eslint": "10.0.1",
     "eslint": "5.13.0",
     "eslint-plugin-react": "7.12.4",
+    "html-webpack-plugin": "4.5.2",
     "nodemon": "1.18.10",
     "prettier": "2.6.2"
   },

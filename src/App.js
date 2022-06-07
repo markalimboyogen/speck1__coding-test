@@ -8,7 +8,7 @@ const Styled = {
   Wrapper: styled.div`
     margin: auto;
     max-width: 1024px;
-    padding-top: 48;
+    padding-top: 48px;
   `,
 };
 
